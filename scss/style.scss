@@ -1,0 +1,174 @@
+/*
+* Template Name: Active
+* Template Author: Untree.co
+* Template License: https://creativecommons.org/licenses/by/3.0/
+* Author URI: https://untree.co/
+
+* Twitter: https://twitter.com/Untree_co
+* Facebook: https://web.facebook.com/Untree.co/
+*/
+
+$primary: #fc5404;
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-sans-serif-secondary: 'Montserrat', sans-serif;
+
+@import 'bootstrap/mixins';
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+
+@import 'bootstrap/bootstrap';
+
+@import 'components/site-navbar';
+@import 'components/site-base';
+@import 'components/site-blocks';
+@import 'components/site-footer';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$color: #111;
+
+div {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: rgba($color, 0);
+	overflow: hidden;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+		background: rgba($color, .5);
+		transition: transform .5s ease;
+	}
+	&::after {
+		transition-duration: .8s;
+	}
+	&:hover {
+		&::before {
+			transform: translateX(-100%);
+		}
+		&::after {
+			transform: translateX(-100%);
+		}
+	}
+}
+
+body {
+  --transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --yellow-bg: transparent linear-gradient(114deg, #fdc100 0%, #dd7d00 100%) 0%
+    0% no-repeat padding-box;
+
+  background: url(https://res.cloudinary.com/damqsjjsn/image/upload/v1641672204/landscapewLight_wdbhno.png)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 40px;
+  height: 100vh;
+
+  .btn {
+    border-radius: 23px;
+    letter-spacing: 0.8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: 0;
+    color: white;
+    white-space: nowrap;
+    margin: 20px auto;
+    width: 166px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #dd7d00;
+    background: transparent;
+    &::before {
+      transition: var(--transition);
+      content: "";
+      width: 50%;
+      height: 100%;
+      background: black;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+    //rounded btn styles
+    &.btn-hover {
+      border-radius: 50px;
+      & .btn-text {
+        color: white;
+        // check out mdn docs for different types of blend modes.
+        transition: var(--transition);
+        mix-blend-mode: lighten;
+      }
+
+      &::before {
+        border-radius: 50px;
+        width: 100%;
+        background: var(--yellow-bg);
+      }
+      &:hover {
+        .btn-text {
+          margin-right: 30px;
+        }
+        &::before {
+          background: url("https://res.cloudinary.com/damqsjjsn/image/upload/v1641758792/Icon_ionic-ios-arrow-back_rakyvb.svg")
+              no-repeat,
+            var(--yellow-bg);
+          background-position: center;
+          border-radius: 23px;
+          width: 25%;
+        }
+      }
+    }
+  }
+}
+
+.color {
+  display: block;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  transition: 0.8s ease;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.expanded {
+  width: 200%;
+  padding-bottom: 200%;
+  height: auto;
+}
+$colors: (
+  blue: #2979ff,
+  orange: #ff5bff,
+  pink: #3fff38,
+  white: #fdc100
+);
+$i: 0.25s;
+@each $colorName, $color in $colors {
+  .color--#{$colorName} {
+    background-color: $color;
+    transition-delay: ($i);
+  }
+  $i: $i + 0.25s;
+}
