@@ -321,6 +321,7 @@
 	.tns-item {
 		opacity: .3;
 		transition: .3s all ease;
+		transform: scale(0.9);
 		
 	}
 
@@ -328,6 +329,7 @@
 	.tns-item:not(.tns-slide-active) + .tns-slide-active + .tns-slide-active { 
 		opacity: 1; 
 
+		transform: scale(1.0);
 		.testimonial-item-inner {
 			background: $black;
 
@@ -832,5 +834,44 @@
 		.cat {
 			color: rgba($white, .5);
 		}
+	}
+}
+
+
+.person {
+	h3 {
+		font-size: 20px;
+	}
+}
+.social-2 {
+	li {
+		display: inline-block;
+		a {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background: rgba($black, .02);
+			border-radius: 50%
+		}
+	}
+}
+
+#testimonial-nav {
+	position: absolute;
+	z-index: 1;
+	top: -80px;
+	left: 50%;
+	transform: translateX(-50%);
+	> span {
+		border: 1px solid rgba($black, .1);
+		border-radius: 4px;
+	}
+	span {
+		cursor: pointer;
+		display: inline-block;
+		padding: 10px;
+
 	}
 }
